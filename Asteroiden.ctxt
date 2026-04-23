@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=Asteroiden
+comment1.params=pX
+comment1.target=Asteroiden(int)
+comment2.params=pY
+comment2.target=void\ bewegeAsteroiden(int)
+numComments=3

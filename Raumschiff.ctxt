@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=Raumschiff
+comment1.params=pX\ pY
+comment1.target=Raumschiff(int,\ int)
+comment2.params=bX
+comment2.target=void\ bewegeRaumschiff(int)
+numComments=3
