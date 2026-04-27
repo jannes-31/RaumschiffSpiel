@@ -8,7 +8,7 @@ public class Asteroiden
     
     Asteroiden(int pX)
     {
-    asteroid = new Picture(pX,0,10,10,"asteroid.png");
+    asteroid = new Picture(pX,0,50,50,"asteroid.png");
     
         
         
