@@ -3,12 +3,12 @@ import java.awt.Color;
 
 public class Raumschiff
 {
-    Rectangle raumschiff;
+    Picture raumschiff;
     
     
     Raumschiff(int pX,int pY)
     {
-        raumschiff = new Rectangle(pX,pX,40,80,Color.white);
+        raumschiff = new Picture(pX,pY,120,120,"rakete.png");
         
         
         
