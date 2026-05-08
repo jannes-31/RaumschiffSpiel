@@ -27,8 +27,8 @@ class Spiel
             asteroiden[i] = new Asteroiden(startX, startY);
         }
 
-        punkteAnzeige = new Text(10, 30,  "Punkte: 0", Color.white);
-        lebenAnzeige  = new Text(10, 60,  "Leben:  3", Color.white);
+        punkteAnzeige = new Text(10, 30, "Punkte: 0", Color.white);
+        lebenAnzeige  = new Text(10, 60, "Leben:  3", Color.white);
 
         while (leben > 0)
         {
@@ -53,7 +53,7 @@ class Spiel
                     punkteAnzeige.setText("Punkte: " + punkte);
                 }
 
-                if (raumschiff.getShape().intersects(asteroiden[a].getShape()))
+                if (raumschiff.bild.intersects(asteroiden[a].bild))
                 {
                     leben--;
                     lebenAnzeige.setText("Leben:  " + leben);

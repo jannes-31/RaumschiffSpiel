@@ -2,31 +2,26 @@ import sas.*;
 
 public class Asteroiden
 {
-    private Picture asteroid;
-    static final int GROESSE = 50;
+    Picture bild;
+    int groesse = 50;
 
     Asteroiden(int pX, int pY)
     {
-        asteroid = new Picture(pX, pY, GROESSE, GROESSE, "asteroid.png");
+        bild = new Picture(pX, pY, groesse, groesse, "asteroid.png");
     }
 
     void bewegeAsteroiden(int pY)
     {
-        asteroid.move(0, pY);
+        bild.move(0, pY);
     }
 
     void setzePosition(int neuesX, int neuesY)
     {
-        asteroid.moveTo(neuesX, neuesY);
+        bild.moveTo(neuesX, neuesY);
     }
 
     double getY()
     {
-        return asteroid.getShapeY();
-    }
-
-    Picture getShape()
-    {
-        return asteroid;
+        return bild.getShapeY();
     }
 }
