@@ -13,10 +13,6 @@ public class Raumschiff
 
     void bewegeRaumschiff(int bX)
     {
-        int neuesX = (int) bild.getShapeX() + bX;
-        if (neuesX >= 0 && neuesX <= 380)
-        {
-            bild.move(bX, 0);
-        }
+        bild.move(bX, 0);
     }
 }

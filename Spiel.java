@@ -32,11 +32,11 @@ class Spiel
 
         while (leben > 0)
         {
-            if (fenster.keyLeftPressed())
+            if (fenster.keyLeftPressed() && raumschiff.bild.getShapeX() > 0)
             {
                 raumschiff.bewegeRaumschiff(-5);
             }
-            if (fenster.keyRightPressed())
+            if (fenster.keyRightPressed() && raumschiff.bild.getShapeX() < 380)
             {
                 raumschiff.bewegeRaumschiff(5);
             }
