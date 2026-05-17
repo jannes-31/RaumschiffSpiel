@@ -32,11 +32,11 @@ class Spiel
 
         while (leben > 0)
         {
-            if (fenster.keyLeftPressed() && raumschiff.bild.getShapeX() > 0)
+            if (fenster.keyLeftPressed() && raumschiff.bild.getShapeX() >= 5)
             {
                 raumschiff.bewegeRaumschiff(-5);
             }
-            if (fenster.keyRightPressed() && raumschiff.bild.getShapeX() < 380)
+            if (fenster.keyRightPressed() && raumschiff.bild.getShapeX() <= 375)
             {
                 raumschiff.bewegeRaumschiff(5);
             }
@@ -59,6 +59,7 @@ class Spiel
                     lebenAnzeige.setText("Leben:  " + leben);
                     int neuesX = Tools.randomNumber(0, 450);
                     asteroiden[a].setzePosition(neuesX, -50);
+                    if (leben <= 0) break;
                 }
             }
 
