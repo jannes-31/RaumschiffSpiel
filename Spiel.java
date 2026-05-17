@@ -58,7 +58,7 @@ public class Spiel
                 {
                     if (schuesse[s] == null || !schuesse[s].aktiv)
                     {
-                        double schussX = raumschiff.bild.getCenterX() - 2.5;
+                        double schussX = raumschiff.bild.getShapeX() + 58;
                         double schussY = raumschiff.bild.getShapeY();
                         schuesse[s] = new Schuss(schussX, schussY);
                         schussCooldown = 20;
