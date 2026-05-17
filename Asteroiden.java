@@ -1,34 +1,27 @@
 import sas.*;
-import java.awt.Color;
 
 public class Asteroiden
 {
-    Picture asteroid;
-    int x, y;
-    static final int GROESSE = 50;
+    Picture bild;
+    int groesse = 50;
 
     Asteroiden(int pX, int pY)
     {
-        x = pX;
-        y = pY;
-        asteroid = new Picture(x, y, GROESSE, GROESSE, "asteroid.png");
+        bild = new Picture(pX, pY, groesse, groesse, "asteroid.png");
     }
 
     void bewegeAsteroiden(int pY)
     {
-        y += pY;
-        asteroid.move(0, pY);
+        bild.move(0, pY);
     }
 
     void setzePosition(int neuesX, int neuesY)
     {
-        int dx = neuesX - x;
-        int dy = neuesY - y;
-        x = neuesX;
-        y = neuesY;
-        asteroid.move(dx, dy);
+        bild.moveTo(neuesX, neuesY);
     }
 
-    int getX() { return x; }
-    int getY() { return y; }
+    double getY()
+    {
+        return bild.getShapeY();
+    }
 }
