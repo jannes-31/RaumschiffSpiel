@@ -22,11 +22,8 @@ public class Spiel
 
     void spielen()
     {
-        int punkte          = 0;
-        int leben           = 3;
-        int geschwindigkeit = 3;
-        int schussCooldown  = 0;
-        int frameZaehler    = 0;
+        int punkte = 0;
+        int leben  = 3;
 
         Raumschiff raumschiff = new Raumschiff(190, 850);
 
@@ -43,50 +40,34 @@ public class Spiel
 
         while (leben > 0)
         {
-            raumschiff.steuerung(fenster);
+            if (fenster.keyLeftPressed() && raumschiff.bild.getShapeX() >= 5)
+                raumschiff.bild.move(-5, 0);
+            if (fenster.keyRightPressed() && raumschiff.bild.getShapeX() <= 375)
+                raumschiff.bild.move(5, 0);
 
-            if (fenster.keyPressed(' ') && schussCooldown == 0)
-            {
-                for (Schuss s : schuesse)
-                {
-                    if (!s.istAktiv())
-                    {
-                        s.abfeuern(raumschiff.bild.getShapeX() + 58, raumschiff.bild.getShapeY());
-                        schussCooldown = 20;
-                        break;
-                    }
-                }
-            }
-            if (schussCooldown > 0) schussCooldown--;
+            raumschiff.schiessen(schuesse, fenster);
 
             for (Schuss s : schuesse)
                 punkte += s.update(asteroiden);
 
             for (Asteroiden a : asteroiden)
             {
-                punkte += a.bewege(geschwindigkeit);
-                if (a.kollision(raumschiff.bild))
-                    leben--;
+                punkte += a.bewege(3);
+                if (a.kollision(raumschiff.bild)) leben--;
             }
 
             punkteAnzeige.setText("Punkte: " + punkte);
             lebenAnzeige.setText("Leben:  " + leben);
 
-            frameZaehler++;
-            if (frameZaehler % 300 == 0 && geschwindigkeit < 12)
-                geschwindigkeit++;
-
             try { Thread.sleep(16); } catch (InterruptedException e) {}
         }
 
-        // Alle Spielobjekte entfernen
         fenster.remove(raumschiff.bild);
         for (Asteroiden a : asteroiden) fenster.remove(a.bild);
         for (Schuss s : schuesse)       fenster.remove(s.bild);
         fenster.remove(punkteAnzeige);
         fenster.remove(lebenAnzeige);
 
-        // Game Over Screen
         Text gameOverText  = new Text(95,  430, "GAME OVER!", Color.red);
         gameOverText.setFontSansSerif(true, 48);
         Text punkteEndText = new Text(150, 510, "Punkte: " + punkte, Color.white);
