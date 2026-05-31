@@ -3,16 +3,26 @@ import sas.*;
 public class Raumschiff
 {
     Picture bild;
-    int breite = 120;
-    int hoehe  = 120;
+    private int schussCooldown = 0;
 
     Raumschiff(int pX, int pY)
     {
-        bild = new Picture(pX, pY, breite, hoehe, "rakete.png");
+        bild = new Picture(pX, pY, 120, 120, "rakete.png");
     }
 
-    void bewegeRaumschiff(int bX)
+    void schiessen(Schuss[] schuesse, View fenster)
     {
-        bild.move(bX, 0);
+        if (schussCooldown > 0) { schussCooldown--; return; }
+        if (!fenster.keyPressed(' ')) return;
+
+        for (Schuss s : schuesse)
+        {
+            if (!s.istAktiv())
+            {
+                s.abfeuern(bild.getShapeX() + 58, bild.getShapeY());
+                schussCooldown = 20;
+                return;
+            }
+        }
     }
 }
